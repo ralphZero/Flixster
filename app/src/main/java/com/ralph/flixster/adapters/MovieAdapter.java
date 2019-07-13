@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.ralph.flixster.R;
 import com.ralph.flixster.models.Movies;
@@ -75,11 +76,9 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         ImageView ivBackdrop = viewHolderPopular.backdrop;
 
         String imgUrl = movies.getBackdrop_path();
-
         Glide.with(context)
                 .load(imgUrl)
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.error)
+                .apply(new RequestOptions().placeholder(R.drawable.placeholder).error(R.drawable.error).override(Target.SIZE_ORIGINAL,200))
                 .into(ivBackdrop);
     }
 
@@ -97,11 +96,9 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             imgUrl = movies.getBackdrop_path();
         }
 
-        Glide.with(context)
+       Glide.with(context)
                 .load(imgUrl)
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.error)
-                .override(Target.SIZE_ORIGINAL,200)
+                .apply(new RequestOptions().placeholder(R.drawable.placeholder).error(R.drawable.error).override(Target.SIZE_ORIGINAL,300))
                 .into(ivPoster);
     }
 

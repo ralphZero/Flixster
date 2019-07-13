@@ -36,7 +36,7 @@ public class Movies {
     }
 
     public String getBackdrop_path() {
-        return String.format("https://image.tmdb.org/t/p/w1280/%s", backdrop_path);
+        return String.format("https://image.tmdb.org/t/p/w780/%s", backdrop_path);
     }
 
     public String getPoster_path() {

@@ -1,11 +1,13 @@
 package com.ralph.flixster.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,8 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
+import com.ralph.flixster.DetailsActivity;
+import com.ralph.flixster.MoviesActivity;
 import com.ralph.flixster.R;
 import com.ralph.flixster.models.Movies;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -84,7 +90,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     private void bindDatatoViewHolderBasic(ViewHolderBasic holder, int position) {
-        Movies movies = moviesList.get(position);
+        final Movies movies = moviesList.get(position);
         TextView tvTitle = holder.title;
         tvTitle.setText(movies.getTitle());
         TextView tvOverview = holder.overview;
@@ -101,6 +107,16 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 .load(imgUrl)
                 .apply(new RequestOptions().placeholder(R.drawable.placeholder).error(R.drawable.error))
                 .into(ivPoster);
+
+        RelativeLayout relativeLayout = holder.container;
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, DetailsActivity.class);
+                intent.putExtra("movies", Parcels.wrap(movies));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -113,6 +129,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public ImageView poster;
         public TextView title;
         public TextView overview;
+        public RelativeLayout container;
 
         public ViewHolderBasic(View itemView) {
             super(itemView);
@@ -120,6 +137,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             poster = (ImageView) itemView.findViewById(R.id.poster);
             title = (TextView) itemView.findViewById(R.id.tvTitle);
             overview = (TextView) itemView.findViewById(R.id.tvOverview);
+            container = (RelativeLayout) itemView.findViewById(R.id.container);
 
         }
     }

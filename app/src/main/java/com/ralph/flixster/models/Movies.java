@@ -3,16 +3,20 @@ package com.ralph.flixster.models;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel
 public class Movies {
     String poster_path;
     String title;
     String overview;
     String backdrop_path;
     String vote_average;
+    String popularity;
+    String release_date;
 
     public Movies(JSONObject jsonObject) throws JSONException {
         poster_path = jsonObject.getString("poster_path");
@@ -20,6 +24,12 @@ public class Movies {
         overview = jsonObject.getString("overview");
         backdrop_path = jsonObject.getString("backdrop_path");
         vote_average = jsonObject.getString("vote_average");
+        popularity = jsonObject.getString("popularity");
+        release_date = jsonObject.getString("release_date");
+
+    }
+
+    public Movies(){
 
     }
 
@@ -49,5 +59,13 @@ public class Movies {
 
     public String getOverview() {
         return overview;
+    }
+
+    public String getPopularity() {
+        return popularity;
+    }
+
+    public String getRelease_date() {
+        return release_date;
     }
 }

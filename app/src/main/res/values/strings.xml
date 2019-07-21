@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Flixster</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="release_date">Release Date :</string>
+    <string name="popularity">Popularity :</string>
+    <string name="_12_jan_2019">12 Jan 2019</string>
+    <string name="poster">poster</string>
 </resources>

@@ -7,9 +7,52 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
 
-    <ImageView
-        android:id="@+id/ivBackdrop"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:id="@+id/trailerPopularLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/reLay">
+
+        <ImageView
+            android:id="@+id/ivBackdrop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            tools:srcCompat="@drawable/maxresdefault" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_play_circle_filled_black_24dp" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/reLay"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true">
+
+        <TextView
+            android:id="@+id/tvPopTitle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewStart"
+            android:textColor="@color/greenAccent"
+            android:textSize="24sp"
+            tools:text="Overview" />
+
+        <TextView
+            android:id="@+id/tvPopOverview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPopTitle"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            tools:text="Woody has always been confident about his place in the world and that his priority is taking care of his kid, whether that's Andy or Bonnie. But when Bonnie adds a reluctant new toy called \&quot;Forky\&quot; to her room, a road trip adventure alongside old and new friends will show Woody how big the world can be for a toy." />
+    </RelativeLayout>
+
 </RelativeLayout>
